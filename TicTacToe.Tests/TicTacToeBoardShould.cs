@@ -4,8 +4,8 @@ namespace TicTacToe.Tests;
 
 public class TicTacToeBoardShould
 {
-    private const string X = "X";
-    private const string O = "O";
+    private const char X = 'X';
+    private const char O = 'O';
     
     private readonly TicTacToeBoard _ticTacToe;
 
@@ -31,7 +31,7 @@ public class TicTacToeBoardShould
     {
         _ticTacToe.Place(X, 0, 0);
         
-        Assert.False(_ticTacToe.Place(X, 0, 0));
+        Assert.False(_ticTacToe.Place(X, 0, 1));
     }
 
     [Fact]
@@ -39,6 +39,14 @@ public class TicTacToeBoardShould
     {
         _ticTacToe.Place(X, 0, 0);
         
-        Assert.True(_ticTacToe.Place(O, 0, 0));
+        Assert.True(_ticTacToe.Place(O, 0, 1));
+    }
+
+    [Fact]
+    public void NotAllowAPlayerToPlayOnAPlayedPosition()
+    {
+        _ticTacToe.Place(X, 0, 0);
+        
+        Assert.False(_ticTacToe.Place(O, 0, 0));
     }
 }
