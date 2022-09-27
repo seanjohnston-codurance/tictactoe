@@ -33,4 +33,12 @@ public class TicTacToeBoardShould
         
         Assert.False(_ticTacToe.Place(X, 0, 0));
     }
+
+    [Fact]
+    public void AllowPlayersToPlayInAlternatingTurns()
+    {
+        _ticTacToe.Place(X, 0, 0);
+        
+        Assert.True(_ticTacToe.Place(O, 0, 0));
+    }
 }
